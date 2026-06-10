@@ -1134,13 +1134,6 @@ fn populate_symbols(node: tree_sitter::Node, source: &[u8], symbols: &mut Symbol
                 }
             }
         }
-        "preproc_def" => {
-            if let Some(name_node) = node.child_by_field_name("name") {
-                if let Ok(c_name) = name_node.utf8_text(source) {
-                    symbols.register_constant(c_name);
-                }
-            }
-        }
         _ => {}
     }
     
